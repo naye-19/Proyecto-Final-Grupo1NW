@@ -1,0 +1,29 @@
+main
+{
+     padding-top: 65px !important;
+
+     /*
+     background-color: #8EC5FC;
+     background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+     */
+     
+     /*
+     background-color: #8BC6EC;
+     background-image: linear-gradient(135deg, #89b8ff 50%, #75a7f3 50%);
+     */
+
+     /*
+     background: rgb(27,119,152);
+     background: linear-gradient(90deg, rgba(27,119,152,1) 0%, rgba(122,176,214,1) 0%, rgba(218,229,232,1) 90%);
+     */
+
+     /*
+     background: rgb(156, 195, 209);
+     background: linear-gradient(90deg, rgb(130, 175, 192) 0%, rgb(156, 195, 209) 0%, rgba(218,229,232,1) 90%);
+     */ 
+}
+
+.mul-select
+{
+     width: 20.5rem !important;
+}
