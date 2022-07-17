@@ -105,6 +105,23 @@ abstract class Table
         return $query->execute();
     }
 
+    protected static function obtenerRegistrosIntParams($sqlstr, $params, &$conn = null)
+    {
+        $pConn = null;
+        if ($conn != null) {
+            $pConn = $conn;
+        } else {
+            $pConn = self::getConn();
+        }
+        $query = $pConn->prepare($sqlstr);
+        foreach ($params as $key=>&$value) {
+            $query->bindParam(":".$key, $value, \PDO::PARAM_INT);
+        }
+        $query->execute();
+        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        return $query->fetchAll();
+    }
+
     protected static function _getStructFrom($structure, $data)
     {
         if (is_array($data) && is_array($structure)) {
