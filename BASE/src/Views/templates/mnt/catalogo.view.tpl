@@ -59,7 +59,7 @@
                                 <h5 class="mb-4">Lps. {{ProdPrecioVenta}}</h5>
                                 <p class="card-text">{{ProdDescripcion}}</p>
                             </div>
-                            <button href="index.php?page=Mnt-DetalleProducto&ProdId={{ProdId}}" class="btn btn-primary mx-2">ver más</button>
+                              <a href="index.php?page=Mnt-DetalleProducto&ProdId={{ProdId}}" class="btn btn-primary mx-2">Ver más</a>
                         </div>
                     </div>
                 {{endfor Productos}}
