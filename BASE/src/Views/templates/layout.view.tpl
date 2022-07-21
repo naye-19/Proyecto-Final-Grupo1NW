@@ -42,7 +42,7 @@
               <a class="nav-link" href="index.php?page=index"><i class="fas fa-home mx-2"></i>Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?page=catalogoproductos&PageIndex=1"><i class="fas fa-list-alt mx-2"></i>Productos</a>
+              <a class="nav-link" href="index.php?page=Mnt_Catalogo&PageIndex=1"><i class="fas fa-list-alt mx-2"></i>Productos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="index.php?page=sec_login"><i class="fas fa-sign-in-alt mx-2"></i>Iniciar sesión</a>
