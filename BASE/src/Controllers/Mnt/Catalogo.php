@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PHP Version 7.2
  * Mnt
@@ -10,7 +11,8 @@
  * @version  CVS:1.0.0
  * @link     http://url.com
  */
- namespace Controllers\Mnt;
+
+namespace Controllers\Mnt;
 
 // ---------------------------------------------------------------
 // Sección de imports
@@ -54,14 +56,14 @@ class Catalogo extends PublicController //Nos permite tener los controladores ad
     private $UsuarioBusqueda = ""; //Descripcion del producto (busqueda)
     private $UsuarioBusquedaByPrice = ""; //Busqueda por el precio (rango)
 
-    public function run() :void
+    public function run(): void
     {
         $this->Page = isset($_GET['PageIndex']) ? $_GET['PageIndex'] : 1;
-        $this->Start = ($this->Page-1) * $this->ProductLimit;
+        $this->Start = ($this->Page - 1) * $this->ProductLimit;
         $this->UsuarioBusqueda = isset($_GET['UsuarioBusqueda']) ? $_GET['UsuarioBusqueda'] : "";
-        $this->UsuarioBusquedaByPrice = isset($_GET['UsuarioBusquedaByPrice']) ? $_GET['UsuarioBusquedaByPrice']: "";
+        $this->UsuarioBusquedaByPrice = isset($_GET['UsuarioBusquedaByPrice']) ? $_GET['UsuarioBusquedaByPrice'] : "";
         //mandamos los parametros de busqueda descripcion y precio
-        $this->_load($this->UsuarioBusqueda,$this->UsuarioBusquedaByPrice);
+        $this->_load($this->UsuarioBusqueda, $this->UsuarioBusquedaByPrice);
 
         $dataview = get_object_vars($this);
 
@@ -75,7 +77,7 @@ class Catalogo extends PublicController //Nos permite tener los controladores ad
         \Views\Renderer::render("mnt/catalogo", $dataview, $layout);
     }
 
-    private function _load($busqueda="", $busquedaByPrice="")
+    private function _load($busqueda = "", $busquedaByPrice = "")
     {
         //Si estan vacias ambos mostrara todos los productos 
         if (empty($busqueda) && empty($busquedaByPrice)) {
@@ -86,47 +88,49 @@ class Catalogo extends PublicController //Nos permite tener los controladores ad
         } else {
             //Si por precio es vacia buscamos por descripcion
             if (empty($busquedaByPrice)) {
-                $this->PageTitle = "Resultados de la Búsqueda: ".$this->UsuarioBusqueda;
+                $this->PageTitle = "Resultados de la Búsqueda: " . $this->UsuarioBusqueda;
                 $_total = DaoProductos::searchProductosClienteCount($this->UsuarioBusqueda);
                 $_data = DaoProductos::searchProductosCliente($this->UsuarioBusqueda, $this->Start, $this->ProductLimit);
                 $this->Total = intval($_total["Total"]);
             } else {
                 // buscamos por precio guardamos en un arreglo separado por - para obtener ambos precios.
-                $rangos = explode("-",$busquedaByPrice);
-                $this->PageTitle = "Resultados de la Búsqueda por precio: ".$this->UsuarioBusquedaByPrice;
-                $_total = DaoProductos::searchProductosByPriceCount($rangos[0],$rangos[1]);
-                $_data = DaoProductos::searchProductosByPrice($rangos[0],$rangos[1], $this->Start, $this->ProductLimit);
+                $rangos = explode("-", $busquedaByPrice);
+                $rangos[0] = ($rangos[0]) - ($rangos[0] * 0.15);
+                $rangos[1] = ($rangos[1]) - ($rangos[1] * 0.15);
+                $this->PageTitle = "Resultados de la Búsqueda por precio: " . $this->UsuarioBusquedaByPrice;
+                $_total = DaoProductos::searchProductosByPriceCount($rangos[0], $rangos[1]);
+                $_data = DaoProductos::searchProductosByPrice($rangos[0], $rangos[1], $this->Start, $this->ProductLimit);
                 $this->Total = intval($_total[0]["Total"]);
             }
         }
-        
-       //Esto es para la paginacion y mostrarla ceil redondea al mayor entero.
-        $this->PagesCount = ceil($this->Total/$this->ProductLimit);
+
+        //Esto es para la paginacion y mostrarla ceil redondea al mayor entero.
+        $this->PagesCount = ceil($this->Total / $this->ProductLimit);
 
         //recorremos los indices para la paginacion.
         if (empty($this->UsuarioBusqueda)) {
-            for ($i=1; $i<=$this->PagesCount; $i++) {
-                $this->PageIndexes[] = array("Index"=>$i, "Busqueda"=>"", "Estado"=> ($this->Page == $i) ? "active" : "");
+            for ($i = 1; $i <= $this->PagesCount; $i++) {
+                $this->PageIndexes[] = array("Index" => $i, "Busqueda" => "", "Estado" => ($this->Page == $i) ? "active" : "");
             }
         } else {
-            for ($i=1; $i<=$this->PagesCount; $i++) {
-                $this->PageIndexes[] = array("Index"=>$i, "Busqueda"=>$this->UsuarioBusqueda, "Estado"=> ($this->Page == $i) ? "active" : "");
+            for ($i = 1; $i <= $this->PagesCount; $i++) {
+                $this->PageIndexes[] = array("Index" => $i, "Busqueda" => $this->UsuarioBusqueda, "Estado" => ($this->Page == $i) ? "active" : "");
             }
         }
 
         //Previous y next los botones cada vez que se presiona incrementa uno y disminuye el otro.
         $this->Previous = $this->Page - 1;
         $this->Next = $this->Page + 1;
-       
+
         //Descripcion maxima a mostrar en caracteres 
         $max_description_length = 50;
-        
+
         //recorremos los datos que tenemos 
         // strlen contamos de caracteres que tiene la descripcion del producto.
         foreach ($_data as $key => $value) {
             //Offset->Devuelve el valor de un campo con el desplazamiento de la posición inicial por un número especificado de bytes.
             //strrpos -> Encuentra la posición de la última aparición de un substring en un string
-            
+
             //si la descripcion es mayor a 50 mostrara solo 50 caracteres y agg ...
             if (strlen($_data[$key]["ProdDescripcion"]) > $max_description_length) {
                 $string = $value["ProdDescripcion"];
@@ -153,7 +157,7 @@ class Catalogo extends PublicController //Nos permite tener los controladores ad
      */
     private function _setViewData()
     {
-        $this->NextState = ($this->Page==$this->PagesCount) ? "disabled" : "";
+        $this->NextState = ($this->Page == $this->PagesCount) ? "disabled" : "";
         $this->PreviousState = ($this->Page == 1) ? "disabled" : "";
     }
 }
