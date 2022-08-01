@@ -7,8 +7,7 @@ class Error extends PublicController
 {
     public function run(): void
     {
-        echo "error";
-        die();
+        \Utilities\Site::redirectToWithMsg("index.php", "¡Transacción Cancelada!");
     }
 }
 

@@ -1,8 +1,6 @@
 <?php
 namespace Controllers\Mnt;
 
-use Dao\Dao;
-
 class DetalleProducto extends \Controllers\PublicController
 {
     private $ProdId = 0;
@@ -70,7 +68,7 @@ class DetalleProducto extends \Controllers\PublicController
         $this->ProdCantidad = isset($_POST["ProdCantidad"])?$_POST["ProdCantidad"]:""; 
         $this->ProdPrecioVenta = floatval(str_replace(",","",$this->ProdPrecioVenta));
         $this->ProdStock = isset($_POST["ProdStock"]) ? $_POST["ProdStock"] : "";
-/*
+
         if(!\Utilities\Security::isLogged())
         {
             $this->addProductCarritoAnonimo();
@@ -78,9 +76,9 @@ class DetalleProducto extends \Controllers\PublicController
         else
         {
             $this->addProductCarritoUsuario();
-        }*/
+        }
     }
-/*
+
     private function addProductCarritoAnonimo()
     {
         $_comprobar = \Dao\Client\CarritoAnonimo::comprobarProductoEnCarritoAnonimo(session_id(), $this->ProdId);
@@ -133,7 +131,7 @@ class DetalleProducto extends \Controllers\PublicController
             }
         }
     }
-*/
+
     private function validarCantidadDisponibleProducto()
     {
         $error = false;
@@ -145,7 +143,7 @@ class DetalleProducto extends \Controllers\PublicController
 
         return $error;
     }
-/*
+
     private function ingresarProductoCarritoAnonimo()
     {
         $resultInsert = \Dao\Client\CarritoAnonimo::insertarProductoCarritoAnonimo(session_id(), $this->ProdId, $this->ProdCantidad, $this->ProdPrecioVenta);
@@ -167,6 +165,5 @@ class DetalleProducto extends \Controllers\PublicController
             \Utilities\Site::redirectToWithMsg("index.php?page=visualizarproducto&ProdId=".$this->ProdId, "Producto Agregado al Carrito con Éxito");
         }
     }
-    */
 }
 ?>
