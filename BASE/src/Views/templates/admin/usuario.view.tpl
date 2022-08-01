@@ -111,5 +111,3 @@
 
   $('select').selectpicker();
 </script>
-
-

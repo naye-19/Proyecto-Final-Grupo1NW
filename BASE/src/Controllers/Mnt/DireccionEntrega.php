@@ -39,7 +39,7 @@ class DireccionEntrega extends \Controllers\PublicController
             }
             else
             {   
-                \Utilities\Site::redirectToWithMsg("index.php?page=catalogoproductos&PageIndex=1", "No tiene productos en el carrito");
+                \Utilities\Site::redirectToWithMsg("index.php?page=mnt_catalogoproductos&PageIndex=1", "No tiene productos en el carrito");
             }
         }
     }

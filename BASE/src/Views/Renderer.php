@@ -5,7 +5,7 @@
  *
  * @category Utility
  * @package  Views
- * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
+ * @author   Grupo 1
  * @license  MIT http://
  * @version  CVS:1.0.0
  * @link     http://
@@ -17,7 +17,7 @@ namespace Views;
  *
  * @category Utility
  * @package  Views
- * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
+ * @author   Grupo 1
  * @license  MIT http://
  * @link     http://
  */
@@ -83,11 +83,7 @@ class Renderer
                 $htmlResult = self::_renderTemplate($template_code, $datos);
 
                 if ($render) {
-                    if($datos["USE_URLREWRITE"] == "1") {
-                        echo self::rewriteUrl($htmlResult);
-                    } else {
-                        echo $htmlResult;
-                    }
+                    echo $htmlResult;
                 } else {
                     return $htmlResult;
                 }
@@ -379,45 +375,6 @@ class Renderer
         );
 
         return $template_code;
-    }
-
-    public static function rewriteUrl($htmlTemplate)
-    {
-        $regexp_array = array(
-            'page '      => '(index.php\??[\w=&]*)',
-        );
-
-        $tag_regexp = "/" . join("|", $regexp_array) . "/";
-
-        //split the code with the tags regexp
-        $template_code = preg_split(
-            $tag_regexp,
-            $htmlTemplate,
-            -1,
-            PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY
-        );
-        $htmlBuffer = "";
-        $basedir = \Utilities\Context::getContextByKey("BASE_DIR");
-        foreach ($template_code as $node) {
-            if (strpos($node, "index.php?page=")  !== false) {
-                $pageStart = strpos($node, "=") + 1;
-                $pageEnd = strpos($node, "&")?:strlen($node);
-                $pageValueLength = $pageEnd - $pageStart;
-                $page = substr($node, $pageStart, $pageValueLength);
-                $query = substr($node, $pageEnd + 1);
-
-                $url = "/" . $basedir . "/" . str_replace(array("_",".","-"), "/", $page);
-                $url .= strlen($query)?"/?".$query:"/";
-                $htmlBuffer .= $url;
-            } else {
-                if ($node == "index.php") {
-                    $htmlBuffer .= "/" . $basedir . "/index";
-                } else {
-                    $htmlBuffer .= $node;
-                }
-            }
-        }
-        return $htmlBuffer;
     }
     /**
      * Constructor privado evita instancia de esta clase

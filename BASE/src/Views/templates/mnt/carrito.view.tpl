@@ -29,7 +29,7 @@
                 </td>
 
                 <td>
-                    <form method="POST" action="index.php?page=carrito">
+                    <form method="POST" action="index.php?page=mnt_carrito">
                         <input type="hidden" id="ProdId" name="ProdId" value="{{ProdId}}">
                         <input type="hidden" id="ProdCantidad" name="ProdCantidad" value="{{ProdCantidad}}">
                         <button class="btn btn-danger" type="submit">Eliminar</button>
@@ -51,15 +51,6 @@
             <input type="text" readonly class="form-control" id="CarritoTotal" value="{{Total}}">
         </div>
     </form>
-
-    <!--
-    <form action="index.php" method="get">
-        <input type="hidden" name="page" value="admin_categoria"/>
-        <input type="hidden" name="mode" value="UPD" />
-        <input type="hidden" name="CategoriaId" value={{CategoriaId}} />
-        <button type="submit" class="btn btn-primary my-1">Editar</button>
-    </form>
-    -->
 
     {{if Items}}
     <form method="GET" action="index.php">

@@ -5,7 +5,7 @@
  *
  * @category Private
  * @package  Controllers
- * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
+ * @author   Grupo 1
  * @license  MIT http://
  * @version  CVS:1.0.0
  * @link     http://
@@ -17,7 +17,7 @@ namespace Controllers\Admin;
  *
  * @category Public
  * @package  Controllers/Admin
- * @author   Orlando J Betancourth <orlando.betancourth@gmail.com>
+ * @author   Grupo 1
  * @license  MIT http://
  * @link     http://
  */

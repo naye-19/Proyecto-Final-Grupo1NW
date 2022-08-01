@@ -52,14 +52,14 @@
                     <div class="col-lg-3 col-md-4 mb-4">
                         <div class="card h-100 pb-2">
                             <div class="card-body align-items-center d-flex flex-column justify-content-center">
-                                <a href="index.php?page=Mnt-DetalleProducto&ProdId={{ProdId}}"><img class="card-img-top mb-4" src="{{MediaPath}}" alt="{{MediaDoc}}" style="width: 200px; max-height: 400px;"></a>
+                                <a href="index.php?page=Mnt_DetalleProducto&ProdId={{ProdId}}"><img class="card-img-top mb-4" src="{{MediaPath}}" alt="{{MediaDoc}}" style="width: 200px; max-height: 400px;"></a>
                                 <h4 class="card-title text-center mb-4">
-                                <a href="index.php?page=Mnt-DetalleProducto&ProdId={{ProdId}}">{{ProdNombre}}</a>
+                                <a href="index.php?page=Mnt_DetalleProducto&ProdId={{ProdId}}">{{ProdNombre}}</a>
                                 </h4>
                                 <h5 class="mb-4">Lps. {{ProdPrecioVenta}}</h5>
                                 <p class="card-text">{{ProdDescripcion}}</p>
                             </div>
-                              <a href="index.php?page=Mnt-DetalleProducto&ProdId={{ProdId}}" class="btn btn-primary mx-2">Ver más</a>
+                              <a href="index.php?page=Mnt_DetalleProducto&ProdId={{ProdId}}" class="btn btn-primary mx-2">Ver más</a>
                         </div>
                     </div>
                 {{endfor Productos}}

@@ -51,7 +51,7 @@
               <a class="nav-link" href="index.php?page=sec_register">Regístrate</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?page=mnt_carrito"><i class="fas fa-shopping-cart mx-2"></i>Carrito</a>
+              <a class="nav-link" href="index.php?page=Mnt_Carrito"><i class="fas fa-shopping-cart mx-2"></i>Carrito</a>
             </li>
           </ul>
         </div>

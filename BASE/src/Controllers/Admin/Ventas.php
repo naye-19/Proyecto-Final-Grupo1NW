@@ -43,5 +43,3 @@ class Ventas extends \Controllers\PrivateController
         \Views\Renderer::render("admin/ventas", $dataview);
     }
 }
-
-

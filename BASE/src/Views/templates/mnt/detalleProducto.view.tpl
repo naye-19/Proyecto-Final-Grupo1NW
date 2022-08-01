@@ -35,7 +35,7 @@
                         {{ProdDescripcion}}
                     </p>
                     
-                    <form method="POST" action="index.php?page=mnt-detalleProducto&ProdId={{ProdId}}">
+                    <form method="POST" action="index.php?page=mnt_detalleProducto&ProdId={{ProdId}}">
                         <input type="hidden" name="ProdPrecioVenta" value={{ProdPrecioVenta}}>
                         <input type="hidden" name="ProdStock" value={{ProdStock}}>
                         <label class="font-weight-bold" for="ProdCantidad">Cantidad</label>

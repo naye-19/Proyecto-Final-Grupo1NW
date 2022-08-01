@@ -4,8 +4,8 @@
         <h3 class="text-center">{{mode_dsc}}</h3>
       </div>
       <div class="card-body"> 
-        <form class="form" method="post" action="index.php?page=admin_pedido&mode={{mode}}&VentaId={{VentaId}}">
-  
+        <form class="form" method="post" action="index.php?page=admin_venta&mode={{mode}}&VentaId={{VentaId}}">
+
           <div class="form-group col-md-2">
             <label for="CategoriaId">Código</label>
             <input type="hidden" class="form-control" id="VentaId" name="VentaId" value="{{VentaId}}"/>
@@ -54,48 +54,45 @@
 
           <div class="table-responsive">
             <table class="table">
-            <thead class="thead-light">
-                <tr>
-                <th class="text-center align-middle">Código del Producto</th>
-                <th class="text-center align-middle">Nombre del Producto</th>
-                <th class="text-center align-middle">Descripcion del Producto</th>
-                <th class="text-center align-middle">Precio del Producto</th>
-                <th class="text-center align-middle">Cantidad de Producto</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{foreach Productos}}
-                <tr>
-                    <td class="text-center align-middle">{{ProdId}}</td>
-                    <td class="text-center align-middle">{{ProdNombre}}</td>
-                    <td class="text-center align-middle">{{ProdDescripcion}}</td>
-                    <td class="text-center align-middle">{{ProdPrecioVenta}}</td>
-                    <td class="text-center align-middle">{{VentasProdCantidad}}</td>
-                </tr>
-                {{endfor Productos}}
-            </tbody>
-          </table>
-        </div>
+              <thead class="thead-light">
+                  <tr>
+                  <th class="text-center align-middle">Código del Producto</th>
+                  <th class="text-center align-middle">Nombre del Producto</th>
+                  <th class="text-center align-middle">Descripcion del Producto</th>
+                  <th class="text-center align-middle">Precio del Producto</th>
+                  <th class="text-center align-middle">Cantidad de Producto</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {{foreach Productos}}
+                  <tr>
+                      <td class="text-center align-middle">{{ProdId}}</td>
+                      <td class="text-center align-middle">{{ProdNombre}}</td>
+                      <td class="text-center align-middle">{{ProdDescripcion}}</td>
+                      <td class="text-center align-middle">{{ProdPrecioVenta}}</td>
+                      <td class="text-center align-middle">{{VentasProdCantidad}}</td>
+                  </tr>
+                  {{endfor Productos}}
+              </tbody>
+            </table>
+          </div>
 
-        <div class="form-group col-md-2">
-          <label for="VentaCantidadTotal">Ganacia Bruta</label>
-          <input type="text" class="form-control" readonly id="VentaCantidadTotal" name="VentaCantidadTotal" value="{{VentaCantidadTotal}}" maxlength="80">
-        </div>
+          <div class="form-group col-md-2">
+            <label for="VentaCantidadTotal">Ganacia Bruta</label>
+            <input type="text" class="form-control" readonly id="VentaCantidadTotal" name="VentaCantidadTotal" value="{{VentaCantidadTotal}}" maxlength="80">
+          </div>
 
-        <div class="form-group col-md-2">
-          <label for="VentaComisionPayPal">Comisión de Paypal</label>
-          <input type="text" class="form-control" readonly id="VentaComisionPayPal" name="VentaComisionPayPal" value="{{VentaComisionPayPal}}" maxlength="80">
-        </div>
+          <div class="form-group col-md-2">
+            <label for="VentaComisionPayPal">Comisión de Paypal</label>
+            <input type="text" class="form-control" readonly id="VentaComisionPayPal" name="VentaComisionPayPal" value="{{VentaComisionPayPal}}" maxlength="80">
+          </div>
 
-        <div class="form-group col-md-2">
-          <label for="VentaCantidadNeta">Ganancia Neta</label>
-          <input type="text" class="form-control" readonly id="VentaCantidadNeta" name="VentaCantidadNeta" value="{{VentaCantidadNeta}}" maxlength="80">
-        </div>
-         
-          <button type="button" class="btn btn-warning mt-2 ml-3 mr-2" id="btnCancelar" name="btnCancelar">Cancelar</button>
-          {{if showaction}}
-            <button type="submit" class="btn btn-primary mt-2 mr-2" id="btnGuardar" name="btnGuardar">Cambiar Estado</button>
-          {{endif showaction}}
+          <div class="form-group col-md-2">
+            <label for="VentaCantidadNeta">Ganancia Neta</label>
+            <input type="text" class="form-control" readonly id="VentaCantidadNeta" name="VentaCantidadNeta" value="{{VentaCantidadNeta}}" maxlength="80">
+          </div>
+
+          <button type="button" class="btn btn-warning mt-2 ml-3 mr-2" id="btnCancelar" name="btnCancelar">Regresar</button>
         </form>
       </div>
     </div>
@@ -106,10 +103,7 @@
         document.getElementById("btnCancelar").addEventListener("click", function(e){
           e.preventDefault();
           e.stopPropagation();
-          window.location.assign("index.php?page=admin_pedidos");
+          window.location.assign("index.php?page=admin_ventas");
         });
     });
   </script>
-  
-  
-  

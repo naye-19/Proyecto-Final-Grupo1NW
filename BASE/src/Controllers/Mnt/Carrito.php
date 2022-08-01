@@ -42,7 +42,7 @@ class Carrito extends \Controllers\PublicController
         }
 
         $allViewData= get_object_vars($this);
-        \Views\Renderer::render("carrito", $allViewData, $layout);
+        \Views\Renderer::render("mnt/carrito", $allViewData, $layout);
     }
 
     private function mostarProductosCarritoAnonimo()
@@ -80,7 +80,7 @@ class Carrito extends \Controllers\PublicController
 
             if($resultDelete && $resultUpdate)
             {
-                \Utilities\Site::redirectToWithMsg("index.php?page=carrito", "Producto Eliminado con Éxito");
+                \Utilities\Site::redirectToWithMsg("index.php?page=mnt_carrito", "Producto Eliminado con Éxito");
             }
         }
     }
@@ -121,7 +121,7 @@ class Carrito extends \Controllers\PublicController
 
             if($resultDelete && $resultUpdate)
             {
-                \Utilities\Site::redirectToWithMsg("index.php?page=carrito", "Producto Eliminado con Éxito");
+                \Utilities\Site::redirectToWithMsg("index.php?page=mnt_carrito", "Producto Eliminado con Éxito");
             }
         }
     }

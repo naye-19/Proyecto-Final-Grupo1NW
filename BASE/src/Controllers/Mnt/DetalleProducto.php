@@ -151,7 +151,7 @@ class DetalleProducto extends \Controllers\PublicController
 
         if($resultInsert && $resultUpdate)
         {
-            \Utilities\Site::redirectToWithMsg("index.php?page=visualizarproducto&ProdId=".$this->ProdId, "Producto Agregado al Carrito con Éxito");
+            \Utilities\Site::redirectToWithMsg("index.php?page=mnt_detalleProducto&ProdId=".$this->ProdId, "Producto Agregado al Carrito con Éxito");
         }
     }
 
@@ -162,7 +162,7 @@ class DetalleProducto extends \Controllers\PublicController
 
         if($resultInsert && $resultUpdate)
         {
-            \Utilities\Site::redirectToWithMsg("index.php?page=visualizarproducto&ProdId=".$this->ProdId, "Producto Agregado al Carrito con Éxito");
+            \Utilities\Site::redirectToWithMsg("index.php?page=mnt_detalleProducto&ProdId=".$this->ProdId, "Producto Agregado al Carrito con Éxito");
         }
     }
 }

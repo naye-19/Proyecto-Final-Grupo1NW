@@ -12,7 +12,7 @@
             <h3 class="text-center">Datos para la Entrega del Producto</h3>
         </div>
         <div class="card-body"> 
-            <form class="form" method="post" action="index.php?page=direccionentrega">
+            <form class="form" method="post" action="index.php?page=mnt_direccionentrega">
 
             <div class="form-group col-md-5">
                 <label for="DireccionDepartamento">Departamento *</label>
@@ -58,4 +58,3 @@
         </div>
     </div>
   </section>
-

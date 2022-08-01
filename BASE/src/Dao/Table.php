@@ -15,6 +15,7 @@ abstract class Table
         }
         return self::$_conn;
     }
+
     private static $_bindMapping = array(
         "boolean" => \PDO::PARAM_BOOL,
         "integer" => \PDO::PARAM_INT,
@@ -26,9 +27,11 @@ abstract class Table
         "NULL" => \PDO::PARAM_NULL,
         "unknown type" => \PDO::PARAM_STR
     );
+    
     protected static function getBindType($value)
     {
         $valueType = gettype($value);
+        
 
         return self::$_bindMapping[$valueType];
         /*
@@ -52,7 +55,6 @@ abstract class Table
         PDO::PARAM_STR (integer)
         Representa el tipo de dato CHAR, VARCHAR de SQL, u otro tipo de datos de cadena.
          */
-
     }
 
     protected static function obtenerRegistros($sqlstr, $params, &$conn = null)
@@ -66,6 +68,23 @@ abstract class Table
         $query = $pConn->prepare($sqlstr);
         foreach ($params as $key=>&$value) {
             $query->bindParam(":".$key, $value, self::getBindType($value));
+        }
+        $query->execute();
+        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        return $query->fetchAll();
+    }
+
+    protected static function obtenerRegistrosIntParams($sqlstr, $params, &$conn = null)
+    {
+        $pConn = null;
+        if ($conn != null) {
+            $pConn = $conn;
+        } else {
+            $pConn = self::getConn();
+        }
+        $query = $pConn->prepare($sqlstr);
+        foreach ($params as $key=>&$value) {
+            $query->bindParam(":".$key, $value, \PDO::PARAM_INT);
         }
         $query->execute();
         $query->setFetchMode(\PDO::FETCH_ASSOC);
@@ -103,23 +122,6 @@ abstract class Table
             $query->bindParam(":" . $key, $value, self::getBindType($value));
         }
         return $query->execute();
-    }
-
-    protected static function obtenerRegistrosIntParams($sqlstr, $params, &$conn = null)
-    {
-        $pConn = null;
-        if ($conn != null) {
-            $pConn = $conn;
-        } else {
-            $pConn = self::getConn();
-        }
-        $query = $pConn->prepare($sqlstr);
-        foreach ($params as $key=>&$value) {
-            $query->bindParam(":".$key, $value, \PDO::PARAM_INT);
-        }
-        $query->execute();
-        $query->setFetchMode(\PDO::FETCH_ASSOC);
-        return $query->fetchAll();
     }
 
     protected static function _getStructFrom($structure, $data)

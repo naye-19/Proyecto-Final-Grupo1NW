@@ -25,41 +25,40 @@ class Login extends \Controllers\PublicController
             }
             if (! $this->hasError) {
                 if ($dbUser = \Dao\Security\Security::getUsuarioByEmail($this->txtEmail)) {
-                    if ($dbUser["userest"] != \Dao\Security\Estados::ACTIVO) {
+                    if ($dbUser["UsuarioEst"] != \Dao\Security\Estados::ACTIVO) {
                         $this->generalError = "¡Credenciales son incorrectas!";
                         $this->hasError = true;
-                        error_log(
-                            sprintf(
-                                "ERROR: %d %s tiene cuenta con estado %s",
-                                $dbUser["usercod"],
-                                $dbUser["useremail"],
-                                $dbUser["userest"]
-                            )
+                        \Dao\Security\Bitacora::insert(
+                            "project_nw", 
+                            "ERROR: ". $dbUser["UsuarioId"] ." ". $dbUser["UsuarioEmail"]." tiene cuenta con estado ".$dbUser["UsuarioEst"],
+                            "ACT",
+                            $dbUser["UsuarioId"]
                         );
                     }
-                    if (!\Dao\Security\Security::verifyPassword($this->txtPswd, $dbUser["userpswd"])) {
+                    if (!\Dao\Security\Security::verifyPassword($this->txtPswd, $dbUser["UsuarioPswd"])) {
                         $this->generalError = "¡Credenciales son incorrectas!";
                         $this->hasError = true;
-                        error_log(
-                            sprintf(
-                                "ERROR: %d %s contraseña incorrecta",
-                                $dbUser["usercod"],
-                                $dbUser["useremail"]
-                            )
+                        \Dao\Security\Bitacora::insert(
+                            "project_nw",
+                            "ERROR: ". $dbUser["UsuarioId"] ." ". $dbUser["UsuarioEmail"]." contraseña incorrecta",
+                            "ACT",
+                            $dbUser["UsuarioId"]
                         );
+                        
                         // Aqui se debe establecer acciones segun la politica de la institucion.
                     }
                     if (! $this->hasError) {
                         \Utilities\Security::login(
-                            $dbUser["usercod"],
-                            $dbUser["username"],
-                            $dbUser["useremail"]
+                            $dbUser["UsuarioId"],
+                            $dbUser["UsuarioNombre"],
+                            $dbUser["UsuarioEmail"]
                         );
                         if (\Utilities\Context::getContextByKey("redirto") !== "") {
                             \Utilities\Site::redirectTo(
                                 \Utilities\Context::getContextByKey("redirto")
                             );
                         } else {
+                            $this->transferirArticulosCarritoAnonimo();
                             \Utilities\Site::redirectTo("index.php");
                         }
                     }
@@ -70,12 +69,47 @@ class Login extends \Controllers\PublicController
                             $this->txtEmail
                         )
                     );
+                    \Dao\Security\Bitacora::insert(
+                        "project_nw",
+                        "ERROR: ".$this->txtEmail." trato de ingresar",
+                        "ACT",
+                        $dbUser["UsuarioId"]
+                    );
                     $this->generalError = "¡Credenciales son incorrectas!";
                 }
             }
         }
         $dataView = get_object_vars($this);
         \Views\Renderer::render("security/login", $dataView);
+    }
+
+    private function transferirArticulosCarritoAnonimo() : void
+    {
+        $userId = \Utilities\Security::getUserId();
+
+        $ArticulosCarritoAnonimo = \Dao\Client\CarritoAnonimo::getProductosCarritoAnonimo(session_id());
+
+        if(!empty($ArticulosCarritoAnonimo))
+        {
+            foreach($ArticulosCarritoAnonimo as $articulo)
+            {
+                $_comprobar = \Dao\Client\CarritoUsuario::comprobarProductoEnCarritoUsuario($userId,$articulo["ProdId"]);
+                if(empty($_comprobar))
+                {
+                    \Dao\Client\CarritoUsuario::insertarProductoCarritoUsuario($userId,$articulo["ProdId"],$articulo["ProdCantidad"],$articulo["ProdPrecioVenta"]);   
+                }
+                else
+                {
+                    \Dao\Client\CarritoUsuario::sumarProductoInventarioAnonimo($articulo["ProdId"], $_comprobar["ProdCantidad"]);
+                    \Dao\Client\CarritoUsuario::deleteProductoCarritoUsuario($userId, $articulo["ProdId"]);
+                    \Dao\Client\CarritoUsuario::insertarProductoCarritoUsuario($userId,$articulo["ProdId"],$articulo["ProdCantidad"],$articulo["ProdPrecioVenta"]);
+                }
+            }
+
+            \Dao\Client\CarritoAnonimo::deleteAllCarritoAnonimo(session_id());
+            \Utilities\Site::redirectTo("index.php?page=mnt_carrito");
+        }
+
     }
 }
 ?>

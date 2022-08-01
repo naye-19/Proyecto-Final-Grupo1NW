@@ -13,8 +13,17 @@ class Site
     public static function getPageRequest()
     {
         $pageRequest = "index";
-        if (\Utilities\Security::isLogged()) {
-            $pageRequest = "admin\\admin";
+        if (\Utilities\Security::isLogged()) 
+        {
+            $usuario = \Dao\Security\Security::getUsuariobyId(\Utilities\Security::getUserId());
+            
+            if(!empty($usuario))
+            {
+                if($usuario["UsuarioTipo"] !== "PBL")
+                {
+                    $pageRequest = "admin\\admin";
+                }
+            }
         }
         if (isset($_GET["page"])) {
             $pageRequest = str_replace(array("_", "-", "."), "\\", $_GET["page"]);
@@ -22,16 +31,10 @@ class Site
         Context::setArrayToContext($_GET);
         Context::setContext("request_uri", $_SERVER["REQUEST_URI"]);
         return "Controllers\\" . $pageRequest;
-        //  \\Controllers\\rpts\\reportusers 
     }
     public static function redirectTo($url)
     {
-        if (Context::getContextByKey("USE_URLREWRITE") == "1") {
-            header("Location:" . \Views\Renderer::rewriteUrl($url));
-        } else { 
-            header("Location:" . $url);
-        }
-        
+        header("Location:".$url);
         die();
     }
     public static function redirectToWithMsg($url, $msg)

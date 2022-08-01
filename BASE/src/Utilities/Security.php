@@ -14,6 +14,8 @@ class Security {
     public static function logout()
     {
         unset($_SESSION["login"]);
+        session_unset(); 
+        session_destroy(); 
     }
     public static function login($userId, $userName, $userEmail)
     {
@@ -60,7 +62,7 @@ class Security {
                 \Dao\Security\Security::addNewRol($rol, $rol, "ACT");
             }
         }
-        return \Dao\Security\Security::isUsuarioInRol($userId, $rol);
+        return \Dao\Security\Security::getRolesByUsuario($userId, $rol);
     }
 }
 
