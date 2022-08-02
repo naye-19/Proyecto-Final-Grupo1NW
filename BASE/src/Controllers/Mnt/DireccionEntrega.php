@@ -35,11 +35,11 @@ class DireccionEntrega extends \Controllers\PublicController
             {
                 $dataview = get_object_vars($this);
                 \Utilities\Nav::setNavContext();
-                \Views\Renderer::render("direccionentrega", $dataview, "privatelayout.view.tpl");
+                \Views\Renderer::render("mnt/direccionentrega", $dataview, "privatelayout.view.tpl");
             }
             else
             {   
-                \Utilities\Site::redirectToWithMsg("index.php?page=mnt_catalogoproductos&PageIndex=1", "No tiene productos en el carrito");
+                \Utilities\Site::redirectToWithMsg("index.php?page=mnt_catalogo&PageIndex=1", "No tiene productos en el carrito");
             }
         }
     }
