@@ -1,6 +1,6 @@
 <section class="container-fluid min-vh-100">
 
-    <h3 class="my-4 text-center">Gestión de Ventas</h3>
+    <h3 class="my-4 text-center h1 font-weight-bold">Gestión de Ventas</h3>
 
     <div class="d-flex-inline">
         <form method="POST" action="index.php?page=admin_ventas">
@@ -9,15 +9,15 @@
             <input type="search" class="form-control" id="UsuarioBusqueda" name="UsuarioBusqueda" value="{{UsuarioBusqueda}}" placeholder="Ingrese su busqueda">
             </div>
             <div class="col-2">
-            <button type="submit" class="btn btn-primary mb-2" id="btnBuscar" name="btnBuscar">Buscar</button>
+            <button type="submit" class="btn btn-success mb-2" id="btnBuscar" name="btnBuscar">Buscar</button>
             </div>
         </div>
         </form> 
     </div>
 
     <div class="table-responsive">
-        <table class="table">
-        <thead class="thead-light">
+        <table class="table table-striped">
+        <thead class="thead-dark">
             <tr>
                 <th class="text-center align-middle">Código</th>
                 <th class="text-center align-middle">Fecha</th>

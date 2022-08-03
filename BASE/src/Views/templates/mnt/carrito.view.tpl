@@ -1,7 +1,7 @@
 <section class="container min-vh-100">
     <h3 class="my-4">Detalle de la Orden</h3>
-    <table class="table table-bordered">
-        <thead>
+    <table class="table table-striped">
+        <thead class="thead-dark">
             <tr>
                 <th class="text-center">Descripción</th>
                 <th class="text-center">Cantidad</th>
@@ -32,7 +32,7 @@
                     <form method="POST" action="index.php?page=mnt_carrito">
                         <input type="hidden" id="ProdId" name="ProdId" value="{{ProdId}}">
                         <input type="hidden" id="ProdCantidad" name="ProdCantidad" value="{{ProdCantidad}}">
-                        <button class="btn btn-danger" type="submit">Eliminar</button>
+                        <button class="btn btn-outline-danger" type="submit">Eliminar</button>
                     </form>
                 </td>
             </tr>
@@ -56,7 +56,7 @@
     <form method="GET" action="index.php">
         <div class="form-group">
             <input type="hidden" name="page" value="mnt_direccionentrega">
-            <button type="submit" class="btn btn-primary my-4">Realizar transacción</button>
+            <button type="submit" class="btn btn-success my-4">Realizar transacción</button>
         </div>
     </form>
     {{endif Items}}

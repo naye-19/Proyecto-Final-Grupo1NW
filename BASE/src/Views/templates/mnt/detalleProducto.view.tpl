@@ -1,7 +1,7 @@
 <div class="container py-5 mx-auto min-vh-100">
 
     <div class="col-md-4 pt-4 pl-0 mb-4">
-        <button class="btn btn-primary" onclick="goBack()"><i class="fas fa-arrow-left mx-2"></i>Regresar</button>
+        <button class="btn btn-info" onclick="goBack()"><i class="fas fa-arrow-left mx-2"></i>Regresar</button>
     </div>
 
     <div class="header">
@@ -41,7 +41,7 @@
                         <label class="font-weight-bold" for="ProdCantidad">Cantidad</label>
                         <br/>
                         <input class="form-control col-md-2" type="number" id="ProdCantidad" name="ProdCantidad" min="1" value="{{ProdCantidad}}">
-                        <button class="btn btn-primary mt-4" type="submit" id="btnAgregarCarrito"><i class="fas fa-shopping-cart mx-2"></i>Agregar al carrito</button>
+                        <button class="btn btn-info mt-4" type="submit" id="btnAgregarCarrito"><i class="fas fa-shopping-cart mx-2"></i>Agregar al carrito</button>
                     </form>
 
                     {{if Error}}

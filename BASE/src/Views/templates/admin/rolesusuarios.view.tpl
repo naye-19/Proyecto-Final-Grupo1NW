@@ -1,6 +1,6 @@
 <section class="container-fluid min-vh-100">
   
-    <h3 class="my-4 text-center">Gestión de Roles para Usuarios Administrativos</h3>
+    <h3 class="my-4 text-center h1 font-weight-bold">Gestión de Roles para Usuarios Administrativos</h3>
     
     <div class="d-flex-inline">
       <form method="POST" action="index.php?page=admin_rolesusuarios">
@@ -9,15 +9,15 @@
             <input type="search" class="form-control" id="UsuarioBusqueda" name="UsuarioBusqueda" value="{{UsuarioBusqueda}}" placeholder="Ingrese su busqueda" >
           </div>
           <div class="col-2">
-            <button type="submit" class="btn btn-primary mb-2" id="btnBuscar" name="btnBuscar">Buscar</button>
+            <button type="submit" class="btn btn-success mb-2" id="btnBuscar" name="btnBuscar">Buscar</button>
           </div>
         </div>
       </form> 
     </div>
   
     <div class="table-responsive">
-      <table class="table">
-        <thead class="thead-light">
+      <table class="table table-striped">
+        <thead class="thead-dark">
           <tr>
             <th class="text-center align-middle">Código Usuario</th>
             <th class="text-center align-middle">Código Rol</th>
@@ -27,7 +27,7 @@
             <th class="text-center align-middle">Tipo de Usuario</th>
             <th class="text-center align-middle">Fecha de Asignación</th>
             <th class="text-center align-middle">Fecha de Expiración</th>
-            <th class="text-center align-middle"><button type="button" class="btn btn-primary my-2" id="btnAdd">Nuevo</button></th>
+            <th class="text-center align-middle"><button type="button" class="btn btn-outline-light my-2" id="btnAdd">Nuevo</button></th>
           </tr>
         </thead>
         <tbody>
@@ -47,14 +47,14 @@
                     <input type="hidden" name="mode" value="UPD" />
                     <input type="hidden" name="UsuarioId" value={{UsuarioId}} />
                     <input type="hidden" name="RolId" value={{RolId}} />
-                    <button type="submit" class="btn btn-primary my-1">Editar</button>
+                    <button type="submit" class="btn btn-outline-info my-1">Editar</button>
                 </form>
                 <form action="index.php" method="get">
                     <input type="hidden" name="page" value="admin_rolusuario"/>
                     <input type="hidden" name="mode" value="DEL" />
                     <input type="hidden" name="UsuarioId" value={{UsuarioId}} />
                     <input type="hidden" name="RolId" value={{RolId}} />
-                    <button type="submit" class="btn btn-danger my-1">Eliminar</button>
+                    <button type="submit" class="btn btn-outline-danger my-1">Eliminar</button>
                 </form>
               </td>
             </tr>

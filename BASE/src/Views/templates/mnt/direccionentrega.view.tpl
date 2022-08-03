@@ -3,7 +3,7 @@
     <div class="col-md-4 p-0 mt-5">
         <form action="index.php" method="GET">
             <input type="hidden" name="page" value="carrito">
-            <button class="btn btn-primary" onclick=""><i class="fas fa-arrow-left mx-2"></i>Regresar</button>
+            <button class="btn btn-info" onclick=""><i class="fas fa-arrow-left mx-2"></i>Regresar</button>
         </form>  
     </div>
 
@@ -53,7 +53,7 @@
             </section>
             {{endif hasErrors}}
 
-            <button type="submit" class="btn btn-primary mt-2 ml-3" id="btnAceptar" name="btnAceptar">Aceptar</button>
+            <button type="submit" class="btn btn-info mt-2 ml-3" id="btnAceptar" name="btnAceptar">Aceptar</button>
             </form>
         </div>
     </div>

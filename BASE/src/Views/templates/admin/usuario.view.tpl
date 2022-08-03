@@ -91,9 +91,9 @@
         </section>
         {{endif hasErrors}}
         
-        <button type="button" class="btn btn-warning mt-2 ml-3 mr-2" id="btnCancelar" name="btnCancelar">Cancelar</button>
+        <button type="button" class="btn btn-outline-danger mt-2 ml-3 mr-2" id="btnCancelar" name="btnCancelar">Cancelar</button>
         {{if showaction}}
-          <button type="submit" class="btn btn-primary mt-2 mr-2" id="btnGuardar" name="btnGuardar">Guardar</button>
+          <button type="submit" class="btn btn-outline-info mt-2 mr-2" id="btnGuardar" name="btnGuardar">Guardar</button>
         {{endif showaction}}
       </form>
     </div>

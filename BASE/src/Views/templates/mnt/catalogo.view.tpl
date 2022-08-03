@@ -26,14 +26,14 @@
                 </div>
                 <br>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="UsuarioBusquedaByPrice" id="UsuarioBusquedaByPrice" value="500-2000">
+                  <input class="form-check-input" type="radio" name="UsuarioBusquedaByPrice" id="UsuarioBusquedaByPrice" value="501-2000">
                   <label class="form-check-label" for="UsuarioBusquedaByPrice">
                     500 - 2,000
                   </label>
                 </div>
                 <br>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="UsuarioBusquedaByPrice" id="UsuarioBusquedaByPrice" value="2000-10000">
+                  <input class="form-check-input" type="radio" name="UsuarioBusquedaByPrice" id="UsuarioBusquedaByPrice" value="2001-10000000">
                   <label class="form-check-label" for="UsuarioBusquedaByPrice">
                     2,000 +
                   </label>
@@ -47,11 +47,10 @@
           </div>
           <div class="col">
             <div class="row">
-              <!--Recorremos los ciclo foreach agg la imagen por cada recorrido. -->
                 {{foreach Productos}}
                     <div class="col-lg-3 col-md-4 mb-4">
                         <div class="card h-100 pb-2">
-                            <div class="card-body align-items-center d-flex flex-column justify-content-center">
+                            <div class="card-bodys align-items-center d-flex flex-column justify-content-center">
                                 <a href="index.php?page=Mnt_DetalleProducto&ProdId={{ProdId}}"><img class="card-img-top mb-4" src="{{MediaPath}}" alt="{{MediaDoc}}" style="width: 200px; max-height: 400px;"></a>
                                 <h4 class="card-title text-center mb-4">
                                 <a href="index.php?page=Mnt_DetalleProducto&ProdId={{ProdId}}">{{ProdNombre}}</a>

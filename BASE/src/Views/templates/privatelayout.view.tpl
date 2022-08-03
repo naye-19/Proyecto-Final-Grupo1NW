@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img class="mr-3" src="public\img\logo.jpg" style="height:40px; border-radius: 20%;">
+          <img class="mr-3" src="public\img\Logo.png" style="height:40px; border-radius: 20%;">
           {{SITE_TITLE}}
         </a>
         
@@ -84,7 +84,7 @@
   </main>
   <footer class="py-4 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Todo los Derechos Reservados 2021</p>
+      <p class="m-0 text-center text-white">Derechos reservados CAN 2022</p>
     </div>
   </footer>
   {{foreach EndScripts}}

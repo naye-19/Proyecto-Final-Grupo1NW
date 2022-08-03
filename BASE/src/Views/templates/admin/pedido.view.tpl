@@ -92,9 +92,9 @@
           <input type="text" class="form-control" readonly id="VentaCantidadNeta" name="VentaCantidadNeta" value="{{VentaCantidadNeta}}" maxlength="80">
         </div>
          
-          <button type="button" class="btn btn-warning mt-2 ml-3 mr-2" id="btnCancelar" name="btnCancelar">Cancelar</button>
+          <button type="button" class="btn btn-outline-danger mt-2 ml-3 mr-2" id="btnCancelar" name="btnCancelar">Cancelar</button>
           {{if showaction}}
-            <button type="submit" class="btn btn-primary mt-2 mr-2" id="btnGuardar" name="btnGuardar">Cambiar Estado</button>
+            <button type="submit" class="btn btn-outline-info mt-2 mr-2" id="btnGuardar" name="btnGuardar">Cambiar Estado</button>
           {{endif showaction}}
         </form>
       </div>

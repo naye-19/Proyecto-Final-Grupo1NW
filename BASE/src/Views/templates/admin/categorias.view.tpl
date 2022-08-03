@@ -1,6 +1,6 @@
 <section class="container-fluid min-vh-100">
 
-    <h3 class="my-4 text-center">Gestión de Categorías</h3>
+    <h3 class="my-4 text-center h1 font-weight-bold">Gestión de Categorías</h3>
 
     <div class="d-flex-inline">
         <form method="POST" action="index.php?page=admin_categorias">
