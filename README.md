@@ -2,6 +2,7 @@
 Proyecto final de negocios web - Grupo#1
 
 #Integrantes
+
 #Carlos Alberto Ardón Izaguirre -> Coordinador
 
 #Angel David Quintanilla Ferrufino
